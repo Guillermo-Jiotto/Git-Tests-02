@@ -1,6 +1,9 @@
 # This is a basic workflow to help you get started with Actions
 
 name: I-am-Learning-GitHub-Actions
+env:
+  APPLICATION_NAME    : "It's the first day"
+  DEPLOY_PACKAGE_NAME : "of-the-rest-your-life-ver-${{ github.sha }}"
 
 # Controls when the workflow will run
 on:
@@ -23,15 +26,27 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script helloworld
         run: echo "Hello, world!"
+      - name: Execute few commands
+        run: |
+          echo "Application name: ${{ env.APPLICATION_NAME }}"
+          echo "Well, I learned the trade from Piggy Knowles"
+          echo "Sing Sing Tommy Shay, boys"
+          echo "God used me as a hammer, boys"
+          echo "To beat his weary drum today"
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script with two echo-command
+      - name: Run a multi-line script with three echo-command
         run: |
-          echo "Add other actions to build,"
-          echo "test, and deploy your project."
+          echo "Hoist that rag!"
+          echo "Hoist that rag!"
+          echo "Hoist that rag!"
+          
   my-second-job:
     runs-on: ubuntu-latest
     needs: [my-first-job]
     steps:
       - name: Print helloworld in Second job
         run: echo "Hello, world from second job!"
+        
+      - name: Printing Deployment package
+        run: echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME }}"
