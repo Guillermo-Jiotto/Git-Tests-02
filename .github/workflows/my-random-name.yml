@@ -1,0 +1,37 @@
+# This is a basic workflow to help you get started with Actions
+
+name: I-am-Learning-GitHub-Actions
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  my-first-job:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Runs a single command using the runners shell
+      - name: Run a one-line script helloworld
+        run: echo "Hello, world!"
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script with two echo-command
+        run: |
+          echo "Add other actions to build,"
+          echo "test, and deploy your project."
+  my-second-job:
+    runs-on: ubuntu-latest
+    needs: [my-first-job]
+    steps:
+      - name: Print helloworld in Second job
+        run: echo "Hello, world from second job!"
